@@ -19,14 +19,14 @@ pool:
 #  displayName: 'Run a multi-line script'
 
 stages:
+- stage: 'Build'
+  jobs:
+  - job: 'Build'
+    steps:
+    - script: echo Build
+
 - stage: 'Test'
   jobs:
-  - job: 'Checkmarx_Scan'
+  - job: 'Unit_Tests'
     steps:
-    - script: echo Checkmarx Scan
-
-- stage: 'Deploy'
-  jobs:
-  - job: 'Production_Deploy'
-    steps:
-    - script: echo Production Deploy
+    - script: echo Unit Tests
