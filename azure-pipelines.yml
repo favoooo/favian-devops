@@ -18,29 +18,27 @@ pool:
 #    echo See https://aka.ms/yaml
 #  displayName: 'Run a multi-line script'
 
+stages:
 - stage: 'Build'
   jobs: 
-    -job: 'Build'
-    steps:
-      - script: echo Build
+    - job: 'Build'
+      steps:
+        - script: echo Build
 
 - stage: 'Test'
   jobs: 
     - job: 'Unit_Tests'
-    steps:
-      - script: echo Unit Tests
+      steps:
+        - script: echo Unit Tests
     - job: 'Checkmarx_scan'
-    steps:
-      - script: echo Checkmarx scan
+      steps:
+        - script: echo Checkmarx scan
 
 - stage: 'Deploy'
   jobs: 
     - job: 'UAT_Deploy'
-    steps:
-      - script: echo UAT Deploy
+      steps:
+        - script: echo UAT Deploy
     - job: 'Production_Deploy'
-    steps:
-      - script: echo Production Deploy
-
-
-
+      steps:
+        - script: echo Production Deploy
