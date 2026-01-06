@@ -24,6 +24,19 @@ stages:
     - job: 'Build'
       steps:
         - script: echo Build
+        - task: ServiceNow-DevOps-Agent-Artifact-Registration@1
+          inputs:
+            connectedServiceName: 'dev207018-favian-devops-ServiceNow DevOps Service Connection'
+            artifactsPayload: |
+              {
+                  "artifacts": [
+                    {
+                        "name": "favian-devops.war",
+                        "version": "2.$(Build.BuildId).0",
+                        "repositoryName": "favian-DevOps"
+                    }
+                  ]
+              }
 
 - stage: 'Test'
   jobs: 
