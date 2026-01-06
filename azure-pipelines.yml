@@ -55,3 +55,18 @@ stages:
     - job: 'Production_Deploy'
       steps:
         - script: echo Production Deploy
+        - task: ServiceNow-DevOps-Agent-Package-Registration@1
+          inputs:
+            connectedServiceName: 'dev207018-favian-devops-ServiceNow DevOps Service Connection'
+            packageName: "Package - $(Build.BuildId)"
+            artifactsPayload: |
+              {
+                  "artifacts": [
+                  {
+                      "name": "favian-devops.war",
+                      "repositoryName": "favian-DevOps",
+                      "version": "2.$(build.buildId).0",
+                      "currentBuildInfo": "true"
+                  }]
+              }
+  
